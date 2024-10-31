@@ -108,13 +108,7 @@ export async function toBicSmartAccount<
 >(
   parameters: ToBicSmartAccountParameters<entryPointVersion>
 ): Promise<ToBicSmartAccountReturnType<entryPointVersion>> {
-  const {
-    client,
-    owner,
-    factoryAddress: _factoryAddress,
-    index = BigInt(0),
-    address,
-  } = parameters;
+  const { client, owner, index = BigInt(0), address } = parameters;
 
   const localOwner = await toOwner({ owner });
 
@@ -220,6 +214,7 @@ export async function toBicSmartAccount<
     async signUserOperation(parameters) {
       const { chainId = await getMemoizedChainId(), ...userOperation } =
         parameters;
+      console.log("version", entryPoint.version);
       return signMessage(client, {
         account: localOwner,
         message: {
