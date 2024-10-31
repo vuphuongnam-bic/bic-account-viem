@@ -41,7 +41,7 @@ const pimlicoClient = createPimlicoClient({
 });
 
 // Create a Bic Smart Account Instance
-const account = await toBicSmartAccount({
+export const account = await toBicSmartAccount({
   client,
   owner: privateKeyToAccount(privateKey),
   entryPoint: {
